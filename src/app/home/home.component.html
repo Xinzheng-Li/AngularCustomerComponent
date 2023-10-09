@@ -1,0 +1,14 @@
+<div style="border:1px solid black;padding: 10px;">
+    <app-autocomplete-input [menuItems]="autocompleteInputData" [(model)]="autocompleteInputModel" [showAddBtn]="true"
+        [(value)]="autocompleteInputValue" (objectChange)="onChange($event)" (focus)="onFocus($event)"
+        (input)="onInput($event)" (change)="onModelChange($event)" (blur)="onBlur($event)"
+        #autocompleteInput></app-autocomplete-input>
+    <p>
+        <button (click)="autocompleteInput.clearText()">clear</button>
+    </p>
+    <p>
+        autocompleteInputModel : {{autocompleteInputModel}}
+        <br />
+        autocompleteInputValue : {{autocompleteInputValue}}
+    </p>
+</div>

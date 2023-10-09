@@ -1,0 +1,20 @@
+<div>
+    <input type="text" matInput [formControl]="myControl"
+        #autocompleteTrigger="matAutocompleteTrigger" [matAutocomplete]="auto" [placeholder]="placeholder"
+        #autocompleteInput maxlength={{maxlength}} (focus)="onFocus($event)" (input)="onInput($event)"
+        (change)="onModelChange($event)" (blur)="onBlur($event)">
+
+    <mat-autocomplete #auto="matAutocomplete" #autocomplete isDisabled="true" (optionSelected)="selectedOption($event)"
+        [displayWith]="displayFn">
+        <mat-option *ngFor="let option of filteredOptions | async" [value]="option">
+            {{option.label}}
+        </mat-option>
+        <mat-option *ngIf="loading" [disabled]="true" class="loading">
+            loading...
+        </mat-option>
+        <mat-option *ngIf="showAddBtn&&inputText!=''" [ngClass]="{'addoption-active':addoptionActive}"
+            [disabled]="!addoptionActive" value="(add)" class="addoption">
+            + Add <span>{{ inputText?'"'+inputText+'"':inputText }}</span>
+        </mat-option>
+    </mat-autocomplete>
+</div>
